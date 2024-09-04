@@ -10,6 +10,11 @@ namespace ShootAbby
     {
         static void Main(string[] args)
         {
+            Witch player = new Witch();
+
+            Console.Write(player.design);
+
+            Console.ReadLine();
         }
     }
 }
