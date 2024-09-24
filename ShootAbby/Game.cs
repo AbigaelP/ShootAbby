@@ -12,20 +12,43 @@ namespace ShootAbby
             InitializeComponent();
             _currentContext = BufferedGraphicsManager.Current;
             _graphics = _currentContext.Allocate(this.CreateGraphics(), this.DisplayRectangle);
-            _witch = new Witch(400,200);
+            _witch = new Witch(400, 200);
         }
         private void NewFrame(object sender, EventArgs e)
         {
-            Console.WriteLine("c");
             Render();
         }
-
         private void Render()
         {
             _graphics.Graphics.Clear(Color.LightGreen);
             _witch.Render(_graphics);
             _graphics.Render();
-            
+
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PressKey(object sender, KeyEventArgs e)
+        {
+            Console.WriteLine(e.KeyCode);
+
+            switch (e.KeyCode)
+            {
+                case Keys.A:
+                    _witch.X += -1;
+                    break;
+                case Keys.W:
+                    _witch.Y += -1;
+                    break;
+                case Keys.S:
+                    _witch.Y += 1;
+                    break;
+                case Keys.D:
+                    _witch.X += 1;
+                    break;
+            }
         }
     }
 }

@@ -28,17 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             ticker = new System.Windows.Forms.Timer(components);
-            //
+            SuspendLayout();
+            // 
             // ticker
-            //
+            // 
             ticker.Enabled = true;
             ticker.Tick += NewFrame;
-
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            // 
+            // Game
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Name = "Game";
+            Text = "ShootAbby";
+            KeyDown += PressKey;
+            ResumeLayout(false);
         }
 
         #endregion
