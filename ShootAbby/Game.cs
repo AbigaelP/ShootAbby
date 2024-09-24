@@ -13,6 +13,8 @@ namespace ShootAbby
             _currentContext = BufferedGraphicsManager.Current;
             _graphics = _currentContext.Allocate(this.CreateGraphics(), this.DisplayRectangle);
             _witch = new Witch(400, 200);
+            //fluidifie le mouvement 
+            ticker.Interval = 10;
         }
         private void NewFrame(object sender, EventArgs e)
         {
