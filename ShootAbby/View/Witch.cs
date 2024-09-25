@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShootAbby.Model
 {
-    internal partial class Witch
+    public partial class Witch
     {
         //le stylo nommée witchBush pour écrire dans l'affichage
         private Pen witchBrush = new Pen(new SolidBrush(Color.Purple), 3);

@@ -11,7 +11,7 @@ namespace ShootAbby
         {
             try
             {
-                _witch = new Witch(600, 200);
+                _witch = new Witch(400, 200);
             }
             catch (Exception ex)
             {

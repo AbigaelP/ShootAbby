@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShootAbby.Model
 {
-    internal partial class  Witch
+    public partial class  Witch
     {
         private int _x;
         private int _y;
