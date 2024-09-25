@@ -9,10 +9,17 @@ namespace ShootAbby
         Witch _witch;
         public Game()
         {
+            try
+            {
+                _witch = new Witch(600, 200);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ça va la tête ???");
+            }
             InitializeComponent();
             _currentContext = BufferedGraphicsManager.Current;
             _graphics = _currentContext.Allocate(this.CreateGraphics(), this.DisplayRectangle);
-            _witch = new Witch(400, 200);
             //fluidifie le mouvement 
             ticker.Interval = 10;
         }

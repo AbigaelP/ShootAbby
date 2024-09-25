@@ -16,6 +16,7 @@ namespace ShootAbby.Model
         //constructeur de sorcière
         public Witch(int x, int y)
         {
+            if (x < 0 || y < 0 || x > 500 || y > 500) throw new Exception("Witch is out of line!");
            _x = x;
            _y = y;
         }
