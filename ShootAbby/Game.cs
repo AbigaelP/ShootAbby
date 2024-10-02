@@ -72,22 +72,18 @@ namespace ShootAbby
             switch (e.KeyCode)
             {
                 case Keys.A:
-                    _witch.X += -1;
+                    _witch.X += -5;
                     break;
                 case Keys.W:
-                    _witch.Y += -1;
+                    _witch.Y += -5;
                     break;
                 case Keys.S:
-                    _witch.Y += 1;
+                    _witch.Y += 5;
                     break;
                 case Keys.D:
-                    _witch.X += 1;
+                    _witch.X += 5;
                     break;
             }
-
-            _witch.PreventOutside();
         }
-
-
     }
 }
