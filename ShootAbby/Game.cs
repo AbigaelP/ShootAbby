@@ -37,7 +37,7 @@ namespace ShootAbby
             _witch = new Witch(WIDTH / 2, HEIGHT / 2);
         }
         /// <summary>
-        /// Mettre ï¿½ jour l'affichage tout les 100 ms
+        /// Mettre à jour l'affichage tout les 100 ms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -61,7 +61,7 @@ namespace ShootAbby
 
         }
         /// <summary>
-        /// Dï¿½tecter les touches pour les dï¿½placements
+        /// Détecter les touches pour les déplacements
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -84,6 +84,8 @@ namespace ShootAbby
                     _witch.X += 1;
                     break;
             }
+
+            _witch.PreventOutside();
         }
 
 

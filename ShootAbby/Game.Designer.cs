@@ -45,6 +45,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "Game";
             Text = "ShootAbby";
+            KeyDown += PressKey;
             ResumeLayout(false);
         }
 

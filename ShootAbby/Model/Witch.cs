@@ -34,17 +34,17 @@ namespace ShootAbby.Model
             {
                 X = 0;
             }
-            if (X + 50 > Game.HEIGHT)
+            if (X + 50 > Game.WIDTH)
             {
-                X = Game.HEIGHT -50;
+                X = Game.WIDTH -50;
             }
             if (Y < 0 )
             {
                 Y = 0;
             }
-            if (Y + 50 > Game.WIDTH)
+            if (Y + 50 > Game.HEIGHT)
             {
-                Y = Game.WIDTH -50;
+                Y = Game.HEIGHT -50;
             }
         }
 
