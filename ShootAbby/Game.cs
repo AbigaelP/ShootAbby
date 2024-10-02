@@ -34,7 +34,12 @@ namespace ShootAbby
         }
         private void NewFrame(object sender, EventArgs e)
         {
+            UpdatePosition();
             Render();
+        }
+        private void UpdatePosition()
+        {
+            _witch.PreventOutside();
         }
         private void Render()
         {
