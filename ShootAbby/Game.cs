@@ -4,11 +4,16 @@ namespace ShootAbby
 {
     public partial class Game : Form
     {
+        public static readonly int WIDTH = 1200;
+        public static readonly int HEIGHT = 600;
+
         BufferedGraphicsContext _currentContext;
-        BufferedGraphics _graphics;
+        BufferedGraphics _game;
         Witch _witch;
+
         public Game()
         {
+            /* test du try and catch
             try
             {
                 _witch = new Witch(400, 200);
@@ -17,11 +22,15 @@ namespace ShootAbby
             {
                 MessageBox.Show("ça va la tête ???");
             }
+            */
+
             InitializeComponent();
             _currentContext = BufferedGraphicsManager.Current;
-            _graphics = _currentContext.Allocate(this.CreateGraphics(), this.DisplayRectangle);
+            _game = _currentContext.Allocate(this.CreateGraphics(), this.DisplayRectangle);
             //fluidifie le mouvement 
             ticker.Interval = 10;
+            //le joueur
+            _witch = new Witch(WIDTH / 2, HEIGHT / 2);
         }
         private void NewFrame(object sender, EventArgs e)
         {
@@ -29,9 +38,9 @@ namespace ShootAbby
         }
         private void Render()
         {
-            _graphics.Graphics.Clear(Color.LightGreen);
-            _witch.Render(_graphics);
-            _graphics.Render();
+            _game.Graphics.Clear(Color.LightGreen);
+            _witch.Render(_game);
+            _game.Render();
 
         }
         /// <summary>
@@ -59,5 +68,7 @@ namespace ShootAbby
                     break;
             }
         }
+
+
     }
 }
