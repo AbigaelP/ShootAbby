@@ -30,21 +30,21 @@ namespace ShootAbby.Model
         /// </summary>
         public void PreventOutside()
         {
-            if (_x < 0 )
+            if (X < 0 )
             {
-                _x = 0;
+                X = 0;
             }
-            if (_x + 50 > Game.HEIGHT)
+            if (X + 50 > Game.HEIGHT)
             {
-                _x = Game.HEIGHT -50;
+                X = Game.HEIGHT -50;
             }
-            if (_y < 0 )
+            if (Y < 0 )
             {
-                _y = 0;
+                Y = 0;
             }
-            if (_y + 50 > Game.WIDTH)
+            if (Y + 50 > Game.WIDTH)
             {
-                _y = Game.WIDTH -50;
+                Y = Game.WIDTH -50;
             }
         }
 

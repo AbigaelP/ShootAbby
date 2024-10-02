@@ -27,16 +27,28 @@ namespace ShootAbby
             InitializeComponent();
             _currentContext = BufferedGraphicsManager.Current;
             _game = _currentContext.Allocate(this.CreateGraphics(), this.DisplayRectangle);
+            //
             //fluidifie le mouvement 
+            //
             ticker.Interval = 10;
+            //
             //le joueur
+            //
             _witch = new Witch(WIDTH / 2, HEIGHT / 2);
         }
+        /// <summary>
+        /// Mettre � jour l'affichage tout les 100 ms
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NewFrame(object sender, EventArgs e)
         {
             UpdatePosition();
             Render();
         }
+        /// <summary>
+        /// Empecher la sortie de zone
+        /// </summary>
         private void UpdatePosition()
         {
             _witch.PreventOutside();
@@ -49,7 +61,7 @@ namespace ShootAbby
 
         }
         /// <summary>
-        /// 
+        /// D�tecter les touches pour les d�placements
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
