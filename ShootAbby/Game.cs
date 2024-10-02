@@ -10,7 +10,7 @@ namespace ShootAbby
         BufferedGraphicsContext _currentContext;
         BufferedGraphics _game;
         Witch _witch;
-
+        Rock _rocher;
         public Game()
         {
             /* test du try and catch
@@ -35,6 +35,11 @@ namespace ShootAbby
             //le joueur
             //
             _witch = new Witch(WIDTH / 2, HEIGHT / 2);
+            ///
+            ///Création des crocher
+            ///
+            _rocher = new Rock(105,20);
+   
         }
         /// <summary>
         /// Mettre à jour l'affichage tout les 100 ms
@@ -52,16 +57,19 @@ namespace ShootAbby
         private void UpdatePosition()
         {
             _witch.PreventOutside();
+
         }
         private void Render()
         {
             _game.Graphics.Clear(Color.LightGreen);
             _witch.Render(_game);
+            _rocher.Render(_game);
             _game.Render();
+            
 
         }
         /// <summary>
-        /// Détecter les touches pour les déplacements
+        /// Détecter les touches pour effectuer les déplacements
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
