@@ -121,6 +121,10 @@ namespace ShootAbby
             { 
                _witch.Projectiles.Remove(item); 
             }
+            foreach(Slime item in _slimes)
+            {
+                item.Move(_witch.Rectangle);
+            }
 
         }
         private void Render()
