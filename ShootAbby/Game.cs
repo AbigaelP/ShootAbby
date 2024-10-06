@@ -38,9 +38,20 @@ namespace ShootAbby
             //le joueur
             //
             _witch = new Witch(WIDTH / 2, HEIGHT / 2);
-            ///
-            ///Création des crocher
-            ///
+            //
+            // Les slimes
+            //
+            Spawn zone1 = new Spawn(300, 300);
+            _zones.Add(zone1);
+            Spawn zone2 = new Spawn(1500, 300);
+            _zones.Add(zone2);
+            Spawn zone3 = new Spawn(300, 900);
+            _zones.Add(zone3);
+            Spawn zone4 = new Spawn(1500,900);
+            _zones.Add(zone4);
+            //
+            //Création des crocher
+            //
             for (int i = 0; i < 3; i++)
             {
                 Rock rocher = new Rock(Helper.Random(0, WIDTH), Helper.Random(0, HEIGHT));
@@ -50,6 +61,13 @@ namespace ShootAbby
                     _condition = false;
 
                     foreach (Rock element in _rocks)
+                    {
+                        if (rocher.IsTouching(element.Rectangle))
+                        {
+                            _condition = true;
+                        }
+                    }
+                    foreach(Spawn element in _zones)
                     {
                         if (rocher.IsTouching(element.Rectangle))
                         {
@@ -110,6 +128,10 @@ namespace ShootAbby
             for (int i = 0; i < _witch.Projectiles.Count; i++)
             {
                 _witch.Projectiles[i].Render(_game);
+            }
+            foreach(Spawn zone in _zones)
+            {
+                zone.Render(_game);
             }
             _game.Render();
 

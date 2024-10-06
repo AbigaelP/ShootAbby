@@ -21,7 +21,6 @@ namespace ShootAbby.Model
             _x = x;
             _y = y;
             _rectangle = new Rectangle(_x,_y, 50, 50);
-
         }
 
     }
