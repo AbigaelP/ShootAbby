@@ -79,6 +79,19 @@ namespace ShootAbby
         private void UpdatePosition()
         {
             _witch.PreventOutside();
+            List<Projectil> poubelle = new List<Projectil>();
+            foreach (Projectil item in _witch.Projectiles)
+            {
+                item.MoveProjectile();
+                if (!item.IsInside())
+                {
+                    poubelle.Add(item);
+                }
+            }
+            foreach (Projectil item in poubelle) 
+            { 
+               _witch.Projectiles.Remove(item); 
+            }
 
         }
         private void Render()
@@ -89,7 +102,10 @@ namespace ShootAbby
             {
                 _rocks[i].Render(_game);
             }
-
+            for (int i = 0; i < _witch.Projectiles.Count; i++)
+            {
+                _witch.Projectiles[i].Render(_game);
+            }
             _game.Render();
 
         }
@@ -122,15 +138,19 @@ namespace ShootAbby
                     break;
                 case Keys.Up:
                     Projectil proUp = new Projectil(_witch.Rectangle.X, _witch.Rectangle.Y, 0, -2);
+                    _witch.Projectiles.Add(proUp);
                     break;
                 case Keys.Down:
                     Projectil proDown = new Projectil(_witch.Rectangle.X, _witch.Rectangle.Y, 0, 2);
+                    _witch.Projectiles.Add(proDown);
                     break;
                 case Keys.Right:
-                    Projectil proRight = new Projectil(_witch.Rectangle.X, _witch.Rectangle.Y, -2, 0);
+                    Projectil proRight = new Projectil(_witch.Rectangle.X, _witch.Rectangle.Y, 2, 0);
+                    _witch.Projectiles.Add(proRight);
                     break;
                 case Keys.Left:
-                    Projectil proLeft = new Projectil(_witch.Rectangle.X, _witch.Rectangle.Y, 2, 0);
+                    Projectil proLeft = new Projectil(_witch.Rectangle.X, _witch.Rectangle.Y, -2, 0);
+                    _witch.Projectiles.Add(proLeft);
                     break;
 
             }

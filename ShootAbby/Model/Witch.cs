@@ -14,6 +14,7 @@ namespace ShootAbby.Model
         public int X { get => _x; set => _x = value; }
         public int Y { get => _y; set => _y = value; }
         public Rectangle Rectangle { get => _rectangle; set => _rectangle = value; }
+        public List<Projectil> Projectiles = new List<Projectil>();
 
         /// <summary>
         /// Constructeur de la sorcière
