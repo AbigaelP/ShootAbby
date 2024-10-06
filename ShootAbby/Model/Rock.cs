@@ -13,7 +13,7 @@ namespace ShootAbby.Model
         private Rectangle _rectangle;
         public int X { get => _x; set => _x = value; }
         public int Y { get => _y; set => _y = value; }
-        public Rectangle rectangle { get => _rectangle;}
+        public Rectangle Rectangle { get => _rectangle;}
 
         /// <summary>
         /// Constructeur du rocher
@@ -47,7 +47,7 @@ namespace ShootAbby.Model
         }
         public bool IsTouching(Rectangle rectangle)
         {
-            return this.rectangle.IntersectsWith(rectangle);
+            return this.Rectangle.IntersectsWith(rectangle);
         }
     }
 }

@@ -50,7 +50,7 @@ namespace ShootAbby
 
                     foreach (Rock element in _rocks)
                     {
-                        if (rocher.IsTouching(element.rectangle))
+                        if (rocher.IsTouching(element.Rectangle))
                         {
                             _condition = true;
                         }
