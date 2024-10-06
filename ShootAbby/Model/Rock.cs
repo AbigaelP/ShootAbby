@@ -10,8 +10,11 @@ namespace ShootAbby.Model
     {
         private int _x;
         private int _y;
+        private Rectangle _rectangle;
         public int X { get => _x; set => _x = value; }
         public int Y { get => _y; set => _y = value; }
+        public Rectangle rectangle { get => _rectangle;}
+
         /// <summary>
         /// Constructeur du rocher
         /// </summary>
@@ -21,6 +24,7 @@ namespace ShootAbby.Model
         {
             _x = x;
             _y = y;
+            _rectangle = new Rectangle(X, Y, 50, 50);
         }
         public void PreventOutside()
         {
@@ -41,6 +45,9 @@ namespace ShootAbby.Model
                 Y = Game.HEIGHT - 50;
             }
         }
-
+        public bool IsTouching(Rectangle rectangle)
+        {
+            return this.rectangle.IntersectsWith(rectangle);
+        }
     }
 }

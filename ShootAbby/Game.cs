@@ -1,4 +1,5 @@
 using ShootAbby.Model;
+using System.Diagnostics;
 
 namespace ShootAbby
 {
@@ -11,6 +12,7 @@ namespace ShootAbby
         BufferedGraphics _game;
         Witch _witch;
         private List<Rock> _rocks = new List<Rock>();
+
         public Game()
         {
             /* test du try and catch
@@ -38,13 +40,33 @@ namespace ShootAbby
             ///
             ///Création des crocher
             ///
-            for (int i = 0; i < 3; i++) 
+            for (int i = 0; i < 3; i++)
             {
-                Rock rocher = new Rock(Helper.Random(0, WIDTH),Helper.Random(0,HEIGHT));
+                Rock rocher = new Rock(Helper.Random(0, WIDTH), Helper.Random(0, HEIGHT));
+                bool _condition = true;
+                while (_condition)
+                {
+                    _condition = false;
+
+                    foreach (Rock element in _rocks)
+                    {
+                        if (rocher.IsTouching(element.rectangle))
+                        {
+                            _condition = true;
+
+                        }
+                    }
+                    if (_condition)
+                    {
+                        rocher = new Rock(Helper.Random(0, WIDTH), Helper.Random(0, HEIGHT));
+                    }
+
+                }
+
                 _rocks.Add(rocher);
                 rocher.PreventOutside();
             }
-   
+
         }
         /// <summary>
         /// Mettre à jour l'affichage tout les 100 ms
@@ -68,11 +90,11 @@ namespace ShootAbby
         {
             _game.Graphics.Clear(Color.LightGreen);
             _witch.Render(_game);
-            for (int i = 0;i < _rocks.Count; i++)
+            for (int i = 0; i < _rocks.Count; i++)
             {
                 _rocks[i].Render(_game);
             }
-            
+
             _game.Render();
 
         }
