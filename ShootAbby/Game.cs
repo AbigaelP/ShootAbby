@@ -13,6 +13,7 @@ namespace ShootAbby
         Witch _witch;
         private List<Rock> _rocks = new List<Rock>();
         private List<Spawn> _zones = new List<Spawn>();
+        private List<Slime> _slimes= new List<Slime>();
 
         public Game()
         {
@@ -39,7 +40,7 @@ namespace ShootAbby
             //
             _witch = new Witch(WIDTH / 2, HEIGHT / 2);
             //
-            // Les slimes
+            // Les zones
             //
             Spawn zone1 = new Spawn(300, 300);
             _zones.Add(zone1);
@@ -49,6 +50,11 @@ namespace ShootAbby
             _zones.Add(zone3);
             Spawn zone4 = new Spawn(1500,900);
             _zones.Add(zone4);
+            foreach (Spawn zone in _zones)
+            {
+                Slime slime = new Slime(zone.Rectangle.X, zone.Rectangle.Y);
+                _slimes.Add(slime);
+            }
             //
             //Création des crocher
             //
@@ -132,6 +138,10 @@ namespace ShootAbby
             foreach(Spawn zone in _zones)
             {
                 zone.Render(_game);
+            }
+            foreach(Slime slime in _slimes)
+            {
+                slime.Render(_game);
             }
             _game.Render();
 

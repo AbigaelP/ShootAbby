@@ -16,7 +16,7 @@ namespace ShootAbby.Model
         {
             _x = x;
             _y = y;
-            _rectangle = new Rectangle(_x,_y, 30,30);
+            _rectangle = new Rectangle(_x,_y, 50,50);
         }
 
         public Rectangle Rectangle { get => _rectangle; set => _rectangle = value; }
