@@ -5,8 +5,8 @@ namespace ShootAbby
 {
     public partial class Game : Form
     {
-        public static readonly int WIDTH = 1200;
-        public static readonly int HEIGHT = 600;
+        public static readonly int WIDTH = 1800;
+        public static readonly int HEIGHT = 1200;
 
         BufferedGraphicsContext _currentContext;
         BufferedGraphics _game;
@@ -53,20 +53,15 @@ namespace ShootAbby
                         if (rocher.IsTouching(element.rectangle))
                         {
                             _condition = true;
-
                         }
                     }
                     if (_condition)
                     {
-                        rocher = new Rock(Helper.Random(0, WIDTH), Helper.Random(0, HEIGHT));
+                        rocher = new Rock(Helper.Random(0, WIDTH - 50), Helper.Random(0, HEIGHT - 50));
                     }
-
                 }
-
                 _rocks.Add(rocher);
-                rocher.PreventOutside();
             }
-
         }
         /// <summary>
         /// Mettre à jour l'affichage tout les 100 ms
@@ -110,17 +105,36 @@ namespace ShootAbby
             switch (e.KeyCode)
             {
                 case Keys.A:
-                    _witch.X += -5;
+                    _witch.Move(-5, 0);
+                    UpdateColission(5, 0);
                     break;
                 case Keys.W:
-                    _witch.Y += -5;
+                    _witch.Move(0, -5);
+                    UpdateColission(0, 5);
                     break;
                 case Keys.S:
-                    _witch.Y += 5;
+                    _witch.Move(0, 5);
+                    UpdateColission(0, -5);
                     break;
                 case Keys.D:
-                    _witch.X += 5;
+                    _witch.Move(5, 0);
+                    UpdateColission(-5, 0);
                     break;
+            }
+        }
+        private void UpdateColission(int x, int y)
+        {
+            bool _condition = false;
+            foreach (Rock e in _rocks)
+            {
+                if (e.IsTouching(_witch.Rectangle))
+                {
+                    _condition = true;
+                }
+            }
+            if (_condition)
+            {
+                _witch.Move(x, y);
             }
         }
     }
