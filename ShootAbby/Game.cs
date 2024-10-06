@@ -10,7 +10,7 @@ namespace ShootAbby
         BufferedGraphicsContext _currentContext;
         BufferedGraphics _game;
         Witch _witch;
-        Rock _rocher;
+        private List<Rock> _rocks = new List<Rock>();
         public Game()
         {
             /* test du try and catch
@@ -38,7 +38,12 @@ namespace ShootAbby
             ///
             ///Création des crocher
             ///
-            _rocher = new Rock(105,20);
+            for (int i = 0; i < 3; i++) 
+            {
+                Rock rocher = new Rock(Helper.Random(0, WIDTH),Helper.Random(0,HEIGHT));
+                _rocks.Add(rocher);
+                rocher.PreventOutside();
+            }
    
         }
         /// <summary>
@@ -63,9 +68,12 @@ namespace ShootAbby
         {
             _game.Graphics.Clear(Color.LightGreen);
             _witch.Render(_game);
-            _rocher.Render(_game);
-            _game.Render();
+            for (int i = 0;i < _rocks.Count; i++)
+            {
+                _rocks[i].Render(_game);
+            }
             
+            _game.Render();
 
         }
         /// <summary>
