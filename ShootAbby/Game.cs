@@ -120,19 +120,6 @@ namespace ShootAbby
                     _witch.Move(5, 0);
                     UpdateColission(-5, 0);
                     break;
-                case Keys.Up:
-                    Projectil proUp = new Projectil(_witch.Rectangle.X, _witch.Rectangle.Y, 0,-2);
-                    break;
-                case Keys.Down:
-                    Projectil proDown = new Projectil(_witch.Rectangle.X, _witch.Rectangle.Y, 0, 2);
-                    break;
-                case Keys.Right:
-                    Projectil proRight = new Projectil(_witch.Rectangle.X, _witch.Rectangle.Y, -2, 0);
-                    break;
-                case Keys.Left:
-                    Projectil proLeft = new Projectil(_witch.Rectangle.X, _witch.Rectangle.Y, 2, 0);
-                    break;
-
             }
         }
         private void UpdateColission(int x, int y)
