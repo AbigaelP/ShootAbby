@@ -12,6 +12,7 @@ namespace ShootAbby
         BufferedGraphics _game;
         Witch _witch;
         private List<Rock> _rocks = new List<Rock>();
+        private List<Spawn> _zones = new List<Spawn>();
 
         public Game()
         {
@@ -54,6 +55,10 @@ namespace ShootAbby
                         {
                             _condition = true;
                         }
+                    }
+                    if (rocher.IsTouching(_witch.Rectangle))
+                    {
+                        _condition = true;
                     }
                     if (_condition)
                     {
