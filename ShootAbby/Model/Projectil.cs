@@ -33,6 +33,11 @@ namespace ShootAbby.Model
             _rectangle.X += _deplacementX;
             _rectangle.Y += _deplacementY;
         }
+        
+        /// <summary>
+        /// Controle si le projectile est toujours dans l'écran
+        /// </summary>
+        /// <returns></returns>
         public bool IsInside()
         {
             bool result = true;

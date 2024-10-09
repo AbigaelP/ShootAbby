@@ -8,6 +8,7 @@ namespace ShootAbby.Model
 {
     public partial class  Witch
     {
+        // TODO: mettre en place héritage pour ce qui touche au rectangle, les mouvements de déplacement , point de vie
         private int _x;
         private int _y;
         private Rectangle _rectangle;
@@ -52,11 +53,13 @@ namespace ShootAbby.Model
                 _rectangle.Y = Game.HEIGHT - _rectangle.Height;
             }
         }
+        // TODO: héritage déplacement
         public void Move(int deplacementX, int deplacementY)
         {
             _rectangle.X += deplacementX;
             _rectangle.Y += deplacementY;
         }
+        // TODO :
         public bool IsTouching(Rectangle rectangle)
         {
             return _rectangle.IntersectsWith(rectangle);
