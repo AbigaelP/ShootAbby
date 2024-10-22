@@ -13,7 +13,7 @@ namespace ShootAbby
         Witch _witch;
         private List<Rock> _rocks = new List<Rock>();
         private List<Spawn> _zones = new List<Spawn>();
-        private List<Slime> _slimes= new List<Slime>();
+        private List<Slime> _slimes = new List<Slime>();
 
         public Game()
         {
@@ -48,7 +48,7 @@ namespace ShootAbby
             _zones.Add(zone2);
             Spawn zone3 = new Spawn(300, 900);
             _zones.Add(zone3);
-            Spawn zone4 = new Spawn(1500,900);
+            Spawn zone4 = new Spawn(1500, 900);
             _zones.Add(zone4);
             foreach (Spawn zone in _zones)
             {
@@ -73,7 +73,7 @@ namespace ShootAbby
                             _condition = true;
                         }
                     }
-                    foreach(Spawn element in _zones)
+                    foreach (Spawn element in _zones)
                     {
                         if (rocher.IsTouching(element.Rectangle))
                         {
@@ -99,8 +99,46 @@ namespace ShootAbby
         /// <param name="e"></param>
         private void NewFrame(object sender, EventArgs e)
         {
+            VerifyCollision();
             UpdatePosition();
             Render();
+        }
+        /// <summary>
+        /// Vérifier les collisisons
+        /// </summary>
+        private void VerifyCollision()
+        {
+            List<Projectil> poubelle = new List<Projectil>();
+            bool estDansLaPoubelle = false;
+            foreach (Projectil projectil in _witch.Projectiles)
+            {
+                foreach (Slime slime in _slimes)
+                {
+                    if (slime.IsTouching(projectil.Rectangle))
+                    {
+                        poubelle.Add(projectil);
+                        estDansLaPoubelle = true;
+                    }
+                }
+
+                if (!estDansLaPoubelle)
+                {
+                    foreach (Rock rock in _rocks)
+                    {
+                        if (rock.IsTouching(projectil.Rectangle))
+                        {
+                            poubelle.Add(projectil);
+                            estDansLaPoubelle = true;
+                        }
+                    }
+                }
+                estDansLaPoubelle = false;
+            }
+
+            foreach (Projectil item in poubelle)
+            {
+                _witch.Projectiles.Remove(item);
+            }
         }
         /// <summary>
         /// Empecher la sortie de zone
@@ -117,11 +155,11 @@ namespace ShootAbby
                     poubelle.Add(item);
                 }
             }
-            foreach (Projectil item in poubelle) 
-            { 
-               _witch.Projectiles.Remove(item); 
+            foreach (Projectil item in poubelle)
+            {
+                _witch.Projectiles.Remove(item);
             }
-            foreach(Slime item in _slimes)
+            foreach (Slime item in _slimes)
             {
                 item.Move(_witch.Rectangle);
             }
@@ -139,11 +177,11 @@ namespace ShootAbby
             {
                 _witch.Projectiles[i].Render(_game);
             }
-            foreach(Spawn zone in _zones)
+            foreach (Spawn zone in _zones)
             {
                 zone.Render(_game);
             }
-            foreach(Slime slime in _slimes)
+            foreach (Slime slime in _slimes)
             {
                 slime.Render(_game);
             }
