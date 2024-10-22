@@ -50,11 +50,8 @@ namespace ShootAbby
             _zones.Add(zone3);
             Spawn zone4 = new Spawn(1500, 900);
             _zones.Add(zone4);
-            foreach (Spawn zone in _zones)
-            {
-                Slime slime = new Slime(zone.Rectangle.X, zone.Rectangle.Y);
-                _slimes.Add(slime);
-            }
+            
+            SpawnSlime();
             //
             //Création des crocher
             //
@@ -166,6 +163,10 @@ namespace ShootAbby
         /// </summary>
         private void UpdatePosition()
         {
+            if (_slimes.Count == 0)
+            {
+                SpawnSlime();
+            }
             _witch.PreventOutside();
             List<Projectil> poubelle = new List<Projectil>();
             foreach (Projectil item in _witch.Projectiles)
@@ -268,6 +269,18 @@ namespace ShootAbby
             if (_condition)
             {
                 _witch.Move(x, y);
+            }
+        }
+        /// <summary>
+        /// Ajouter un slime à la liste
+        /// </summary>
+        /// <returns></returns>
+        private void SpawnSlime()
+        {
+            foreach (Spawn zone in _zones)
+            {
+                Slime slime = new Slime(zone.Rectangle.X, zone.Rectangle.Y);
+                _slimes.Add(slime);
             }
         }
     }
