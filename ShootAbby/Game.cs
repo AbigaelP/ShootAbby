@@ -113,14 +113,20 @@ namespace ShootAbby
         {
             List<Projectil> poubelle = new List<Projectil>();
             bool estDansLaPoubelle = false;
+            List<Slime> poubelleSlime = new List<Slime>();
             foreach (Projectil projectil in _witch.Projectiles)
             {
                 foreach (Slime slime in _slimes)
                 {
-                    if (slime.IsTouching(projectil.Rectangle))
+                    if (!slime.IsDead() && slime.IsTouching(projectil.Rectangle))
                     {
                         poubelle.Add(projectil);
                         estDansLaPoubelle = true;
+                        slime.Pv--;
+                        if (slime.IsDead())
+                        {
+                            poubelleSlime.Add(slime);
+                        }
                     }
                 }
 
@@ -136,6 +142,10 @@ namespace ShootAbby
                     }
                 }
                 estDansLaPoubelle = false;
+            }
+            foreach (Slime slime in poubelleSlime)
+            {
+                _slimes.Remove(slime);
             }
 
             foreach (Projectil item in poubelle)
