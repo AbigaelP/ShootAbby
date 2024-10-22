@@ -99,9 +99,12 @@ namespace ShootAbby
         /// <param name="e"></param>
         private void NewFrame(object sender, EventArgs e)
         {
-            VerifyCollision();
-            UpdatePosition();
-            Render();
+            if (!_witch.IsDead())
+            {
+                VerifyCollision();
+                UpdatePosition();
+                Render();
+            }
         }
         /// <summary>
         /// Vérifier les collisisons
@@ -138,6 +141,14 @@ namespace ShootAbby
             foreach (Projectil item in poubelle)
             {
                 _witch.Projectiles.Remove(item);
+            }
+
+            foreach (Slime slime in _slimes)
+            {
+                if (slime.IsTouching(_witch.Rectangle))
+                {
+                    _witch.Pv--;
+                }
             }
         }
         /// <summary>

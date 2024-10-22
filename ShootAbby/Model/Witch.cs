@@ -12,9 +12,12 @@ namespace ShootAbby.Model
         private int _x;
         private int _y;
         private Rectangle _rectangle;
+        private int _pv;
         public int X { get => _x; set => _x = value; }
         public int Y { get => _y; set => _y = value; }
         public Rectangle Rectangle { get => _rectangle; set => _rectangle = value; }
+        public int Pv { get => _pv; set => _pv = value; }
+
         public List<Projectil> Projectiles = new List<Projectil>();
 
         /// <summary>
@@ -28,6 +31,7 @@ namespace ShootAbby.Model
            _x = x;
            _y = y;
            _rectangle = new Rectangle(X, Y, 50, 50);
+            _pv = 1000;
 
 
         }
@@ -64,6 +68,19 @@ namespace ShootAbby.Model
         {
             return _rectangle.IntersectsWith(rectangle);
         }
+        /// <summary>
+        /// Controle si la sorcière n'a plus de point de vie
+        /// </summary>
+        /// <returns></returns>
+        public bool IsDead() 
+        {
+            if (_pv > 0)
+            {
+                return false;
+            }
+            //Console.WriteLine("Vous êtes mort");
+            return true;
 
+        }
     }
 }
