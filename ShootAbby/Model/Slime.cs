@@ -7,26 +7,20 @@ using Windows.Devices.Sensors;
 
 namespace ShootAbby.Model
 {
-    public partial class Slime
+    public partial class Slime : GameElement
     {
-        private Rectangle _rectangle;
-        private int _x;
-        private int _y;
-        private int _pv;
-
-        public Rectangle Rectangle { get => _rectangle; set => _rectangle = value; }
-        public int X { get => _x; set => _x = value; }
-        public int Y { get => _y; set => _y = value; }
-        public int Pv { get => _pv; set => _pv = value; }
-
-        public Slime(int x, int y)
+        /// <summary>
+        /// Constructeur du slime
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        public Slime(int x, int y) : base(x, y, 50, 50, 5)
         {
-            _x = x;
-            _y = y;
-            _rectangle = new Rectangle(_x, _y, 50, 50);
-            _pv = 5;
         }
-
+        /// <summary>
+        /// Déplacement du slime par rapoort a la position de la sorcière
+        /// </summary>
+        /// <param name="sorciere"></param>
         public void Move(Rectangle sorciere)
         {
             if (_rectangle.X < sorciere.X)
@@ -45,22 +39,6 @@ namespace ShootAbby.Model
             {
                 _rectangle.Y += -1;
             }
-        }
-        public bool IsTouching(Rectangle rectangle)
-        {
-            return _rectangle.IntersectsWith(rectangle);
-        }
-        /// <summary>
-        /// Controle si le slime est mort
-        /// </summary>
-        /// <returns></returns>
-        public bool IsDead()
-        {
-            if (_pv > 0)
-            {
-                return false;
-            }
-            return true;
         }
     }
 }

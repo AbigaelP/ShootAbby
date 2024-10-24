@@ -57,6 +57,7 @@ namespace ShootAbby
             _zones.Add(zone4);
             
             SpawnSlime();
+
             //
             //Création des crocher
             //

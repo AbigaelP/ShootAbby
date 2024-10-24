@@ -6,18 +6,8 @@ using System.Threading.Tasks;
 
 namespace ShootAbby.Model
 {
-    public partial class  Witch
+    public partial class  Witch : GameElement
     {
-        // TODO: mettre en place héritage pour ce qui touche au rectangle, les mouvements de déplacement , point de vie
-        private int _x;
-        private int _y;
-        private Rectangle _rectangle;
-        private int _pv;
-        public int X { get => _x; set => _x = value; }
-        public int Y { get => _y; set => _y = value; }
-        public Rectangle Rectangle { get => _rectangle; set => _rectangle = value; }
-        public int Pv { get => _pv; set => _pv = value; }
-
         public List<Projectil> Projectiles = new List<Projectil>();
 
         /// <summary>
@@ -25,15 +15,8 @@ namespace ShootAbby.Model
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        public Witch(int x, int y)
+        public Witch(int x, int y) : base(x, y, 50, 50, 1000)
         {
-            // if (x < 0 || y < 0 || x > 500 || y > 500) throw new Exception("Witch is out of line!");
-           _x = x;
-           _y = y;
-           _rectangle = new Rectangle(X, Y, 50, 50);
-            _pv = 1000;
-
-
         }
         /// <summary>
         /// Empecher la sorcière de sortir de la map
@@ -62,25 +45,6 @@ namespace ShootAbby.Model
         {
             _rectangle.X += deplacementX;
             _rectangle.Y += deplacementY;
-        }
-        // TODO :
-        public bool IsTouching(Rectangle rectangle)
-        {
-            return _rectangle.IntersectsWith(rectangle);
-        }
-        /// <summary>
-        /// Controle si la sorcière n'a plus de point de vie
-        /// </summary>
-        /// <returns></returns>
-        public bool IsDead() 
-        {
-            if (_pv > 0)
-            {
-                return false;
-            }
-            //Console.WriteLine("Vous êtes mort");
-            return true;
-
-        }
+        }    
     }
 }

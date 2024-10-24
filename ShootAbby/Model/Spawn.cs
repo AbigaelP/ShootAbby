@@ -6,19 +6,15 @@ using System.Threading.Tasks;
 
 namespace ShootAbby.Model
 {
-    public partial class Spawn
+    public partial class Spawn : GameElement
     {
-        private int _x;
-        private int _y;
-        private Rectangle _rectangle = new Rectangle();
-
-        public Spawn(int x, int y)
+        /// <summary>
+        /// Constructeur de la zone de spawn
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        public Spawn(int x, int y) : base(x, y, 50, 50, 0)
         {
-            _x = x;
-            _y = y;
-            _rectangle = new Rectangle(_x,_y, 50,50);
         }
-
-        public Rectangle Rectangle { get => _rectangle; set => _rectangle = value; }
     }
 }
