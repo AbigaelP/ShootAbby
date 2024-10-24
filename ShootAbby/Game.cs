@@ -15,6 +15,11 @@ namespace ShootAbby
         private List<Spawn> _zones = new List<Spawn>();
         private List<Slime> _slimes = new List<Slime>();
 
+        //visuel du score
+        private int _score = 0;
+        private Font _drawFont = new Font("Arial", 10);
+        private SolidBrush _writingBrush = new SolidBrush(Color.Black);
+
         public Game()
         {
             /* test du try and catch
@@ -123,6 +128,7 @@ namespace ShootAbby
                         if (slime.IsDead())
                         {
                             poubelleSlime.Add(slime);
+                            _score += 10;
                         }
                     }
                 }
@@ -207,6 +213,10 @@ namespace ShootAbby
             {
                 slime.Render(_game);
             }
+
+            //afficher le score
+            _game.Graphics.DrawString($"Score : {_score}", _drawFont, _writingBrush, 0, 0);
+      
             _game.Render();
 
         }
