@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ShootAbby.Model
 {
-    public class GameElement
+    public partial class GameElement
     {
         protected Rectangle _rectangle;
         protected int _pv;
@@ -18,6 +19,7 @@ namespace ShootAbby.Model
             // if (x < 0 || y < 0 || x > 500 || y > 500) throw new Exception("GameElement is out of line!");
             _rectangle = new Rectangle(x, y, width, height);
             _pv = pv;
+            brush = new Pen(new SolidBrush(Color.Black), 3);
         }
 
         public bool IsTouching(Rectangle rectangle)

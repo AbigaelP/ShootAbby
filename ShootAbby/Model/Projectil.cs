@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace ShootAbby.Model
         {
             _deplacementX = depX;
             _deplacementY = depY;
+            brush = new Pen(new SolidBrush(Color.Black), 3);
         }
         /// <summary>
         /// Déplacement du projectile

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace ShootAbby.Model
         /// <param name="y"></param>
         public Witch(int x, int y) : base(x, y, 50, 50, 1000)
         {
+            brush = new Pen(new SolidBrush(Color.Purple), 3);
         }
         /// <summary>
         /// Empecher la sorcière de sortir de la map

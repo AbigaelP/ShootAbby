@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace ShootAbby.Model
         /// <param name="y"></param>
         public Slime(int x, int y) : base(x, y, 50, 50, 5)
         {
+            brush = new Pen(new SolidBrush(Color.Red), 3);
         }
         /// <summary>
         /// Déplacement du slime par rapoort a la position de la sorcière

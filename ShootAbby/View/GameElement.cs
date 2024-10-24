@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace ShootAbby.Model
 {
-    public partial class Slime
+    public partial class GameElement
     {
-        //le stylo nommée witchBush pour écrire dans l'affichage
-        private Pen witchBrush = new Pen(new SolidBrush(Color.Red), 3);
+        //le stylo nommée brush pour écrire dans l'affichage
+        protected Pen brush;
 
         /// <summary>
-        /// Forme de la sorcière
+        /// Forme du rocher
         /// </summary>
         /// <param name="drawingGame"></param>
         public void Render(BufferedGraphics drawingGame)    //zone de dessin = Buffergraphics
         {
-            drawingGame.Graphics.DrawRectangle(witchBrush, _rectangle);
+            drawingGame.Graphics.DrawRectangle(brush, Rectangle);
         }
     }
 }
