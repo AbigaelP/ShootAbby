@@ -14,9 +14,9 @@ namespace ShootAbby.Model
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        public Rock(int x, int y) : base(x, y, 50, 50, 0)
+        public Rock(int x, int y) : base(x, y, 80, 50, 0)
         {
-            brush = new Pen(new SolidBrush(Color.Gray), 3);
+            _image = Image.FromFile("Image/rock.png");
         }
     }
 }

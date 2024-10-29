@@ -15,9 +15,9 @@ namespace ShootAbby.Model
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        public Slime(int x, int y) : base(x, y, 50, 50, 5)
+        public Slime(int x, int y) : base(x, y, 60, 50, 5)
         {
-            brush = new Pen(new SolidBrush(Color.Red), 3);
+            _image = Image.FromFile("Image/slime.png");
         }
         /// <summary>
         /// Déplacement du slime par rapoort a la position de la sorcière

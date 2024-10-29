@@ -11,6 +11,8 @@ namespace ShootAbby
         BufferedGraphicsContext _currentContext;
         BufferedGraphics _game;
         Witch _witch;
+        private Image _image;
+        private Rectangle _rectangle;
         private List<Rock> _rocks = new List<Rock>();
         private List<Spawn> _zones = new List<Spawn>();
         private List<Slime> _slimes = new List<Slime>();
@@ -55,7 +57,12 @@ namespace ShootAbby
             _zones.Add(zone3);
             Spawn zone4 = new Spawn(1500, 900);
             _zones.Add(zone4);
-            
+            ///
+            /// Image
+            /// 
+            _image = Image.FromFile("Image/background.jpg");
+            _rectangle = new Rectangle(0, 0, WIDTH, HEIGHT);
+
             SpawnSlime();
 
             //
@@ -196,7 +203,9 @@ namespace ShootAbby
         }
         private void Render()
         {
+
             _game.Graphics.Clear(Color.LightGreen);
+            _game.Graphics.DrawImage(_image, _rectangle);
             _witch.Render(_game);
             for (int i = 0; i < _rocks.Count; i++)
             {

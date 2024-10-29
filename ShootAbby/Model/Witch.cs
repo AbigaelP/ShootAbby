@@ -16,9 +16,9 @@ namespace ShootAbby.Model
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        public Witch(int x, int y) : base(x, y, 50, 50, 1000)
+        public Witch(int x, int y) : base(x, y, 100, 100, 1000)
         {
-            brush = new Pen(new SolidBrush(Color.Purple), 3);
+            _image = Image.FromFile("Image/witch.png");
         }
         /// <summary>
         /// Empecher la sorcière de sortir de la map

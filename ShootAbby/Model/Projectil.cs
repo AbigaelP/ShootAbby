@@ -22,7 +22,7 @@ namespace ShootAbby.Model
         {
             _deplacementX = depX;
             _deplacementY = depY;
-            brush = new Pen(new SolidBrush(Color.Black), 3);
+            _image = Image.FromFile("Image/projectil.png");
         }
         /// <summary>
         /// Déplacement du projectile

@@ -17,7 +17,7 @@ namespace ShootAbby.Model
         /// <param name="drawingGame"></param>
         public void Render(BufferedGraphics drawingGame)    //zone de dessin = Buffergraphics
         {
-            drawingGame.Graphics.DrawRectangle(brush, Rectangle);
+            drawingGame.Graphics.DrawImage(_image, Rectangle);
         }
     }
 }

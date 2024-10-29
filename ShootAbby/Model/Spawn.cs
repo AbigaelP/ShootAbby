@@ -16,7 +16,7 @@ namespace ShootAbby.Model
         /// <param name="y"></param>
         public Spawn(int x, int y) : base(x, y, 50, 50, 0)
         {
-            brush = new Pen(new SolidBrush(Color.Orange), 3);
+            _image = Image.FromFile("Image/greenSlime.png");
         }
     }
 }

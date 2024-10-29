@@ -9,6 +9,7 @@ namespace ShootAbby.Model
 {
     public partial class GameElement
     {
+        protected Image _image;
         protected Rectangle _rectangle;
         protected int _pv;
         public Rectangle Rectangle { get => _rectangle; set => _rectangle = value; }
@@ -19,7 +20,8 @@ namespace ShootAbby.Model
             // if (x < 0 || y < 0 || x > 500 || y > 500) throw new Exception("GameElement is out of line!");
             _rectangle = new Rectangle(x, y, width, height);
             _pv = pv;
-            brush = new Pen(new SolidBrush(Color.Black), 3);
+         
+            _image = Image.FromFile("Image/grass.png");
         }
 
         public bool IsTouching(Rectangle rectangle)
