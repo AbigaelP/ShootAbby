@@ -18,10 +18,10 @@ namespace ShootAbby.Model
         public GameElement(int x, int y, int width, int height, int pv)
         {
             // if (x < 0 || y < 0 || x > 500 || y > 500) throw new Exception("GameElement is out of line!");
-            _rectangle = new Rectangle(x, y, width, height);
+            _rectangle = new Rectangle(x - width/2, y - height/2, width, height);
             _pv = pv;
          
-            _image = Image.FromFile("Image/grass.png");
+           // _image = Image.FromFile("Image/grass.png");
         }
 
         public bool IsTouching(Rectangle rectangle)

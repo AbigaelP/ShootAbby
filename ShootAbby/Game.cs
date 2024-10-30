@@ -5,12 +5,13 @@ namespace ShootAbby
 {
     public partial class Game : Form
     {
-        public static readonly int WIDTH = 1800;
-        public static readonly int HEIGHT = 1200;
+        public static readonly int WIDTH = 1200;
+        public static readonly int HEIGHT = 800;
 
         BufferedGraphicsContext _currentContext;
         BufferedGraphics _game;
         Witch _witch;
+        BackGround _backGround;
         private Image _image;
         private Rectangle _rectangle;
         private List<Rock> _rocks = new List<Rock>();
@@ -47,15 +48,19 @@ namespace ShootAbby
             //
             _witch = new Witch(WIDTH / 2, HEIGHT / 2);
             //
+            //
+            //
+            _backGround = new BackGround(0,0);
+            //
             // Les zones
             //
-            Spawn zone1 = new Spawn(300, 300);
+            Spawn zone1 = new Spawn(WIDTH - 170, HEIGHT - 170);
             _zones.Add(zone1);
-            Spawn zone2 = new Spawn(1500, 300);
+            Spawn zone2 = new Spawn(WIDTH - 170, HEIGHT - 630);
             _zones.Add(zone2);
-            Spawn zone3 = new Spawn(300, 900);
+            Spawn zone3 = new Spawn(WIDTH - 1030, HEIGHT - 630);
             _zones.Add(zone3);
-            Spawn zone4 = new Spawn(1500, 900);
+            Spawn zone4 = new Spawn(WIDTH - 1030, HEIGHT - 170);
             _zones.Add(zone4);
             ///
             /// Image
@@ -205,7 +210,8 @@ namespace ShootAbby
         {
 
             _game.Graphics.Clear(Color.LightGreen);
-            _game.Graphics.DrawImage(_image, _rectangle);
+           // _game.Graphics.DrawImage(_image, _rectangle);
+           // _backGround.Render(_game);
             _witch.Render(_game);
             for (int i = 0; i < _rocks.Count; i++)
             {
@@ -258,19 +264,19 @@ namespace ShootAbby
                     UpdateColission(-5, 0);
                     break;
                 case Keys.Up:
-                    Projectil proUp = new Projectil(_witch.Rectangle.X, _witch.Rectangle.Y, 0, -2);
+                    Projectil proUp = new Projectil(_witch.Rectangle.X + 50, _witch.Rectangle.Y, 0, -2);
                     _witch.Projectiles.Add(proUp);
                     break;
                 case Keys.Down:
-                    Projectil proDown = new Projectil(_witch.Rectangle.X, _witch.Rectangle.Y, 0, 2);
+                    Projectil proDown = new Projectil(_witch.Rectangle.X + 50, _witch.Rectangle.Y + 100, 0, 2);
                     _witch.Projectiles.Add(proDown);
                     break;
                 case Keys.Right:
-                    Projectil proRight = new Projectil(_witch.Rectangle.X, _witch.Rectangle.Y, 2, 0);
+                    Projectil proRight = new Projectil(_witch.Rectangle.X +100, _witch.Rectangle.Y + 50, 2, 0);
                     _witch.Projectiles.Add(proRight);
                     break;
                 case Keys.Left:
-                    Projectil proLeft = new Projectil(_witch.Rectangle.X, _witch.Rectangle.Y, -2, 0);
+                    Projectil proLeft = new Projectil(_witch.Rectangle.X, _witch.Rectangle.Y + 50, -2, 0);
                     _witch.Projectiles.Add(proLeft);
                     break;
 

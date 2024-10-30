@@ -47,6 +47,7 @@ namespace ShootAbby.Model
         {
             _rectangle.X += deplacementX;
             _rectangle.Y += deplacementY;
-        }    
+        }
+
     }
 }

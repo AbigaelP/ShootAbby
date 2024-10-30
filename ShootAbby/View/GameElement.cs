@@ -17,7 +17,10 @@ namespace ShootAbby.Model
         /// <param name="drawingGame"></param>
         public void Render(BufferedGraphics drawingGame)    //zone de dessin = Buffergraphics
         {
+            Pen droneBrush = new Pen(new SolidBrush(Color.Purple), 3);
+
             drawingGame.Graphics.DrawImage(_image, Rectangle);
+            drawingGame.Graphics.DrawLine(droneBrush, new Point(Rectangle.X, Rectangle.Y), new Point(Rectangle.X + Pv/10, Rectangle.Y));
         }
     }
 }
