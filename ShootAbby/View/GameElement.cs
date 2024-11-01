@@ -20,7 +20,7 @@ namespace ShootAbby.Model
             Pen droneBrush = new Pen(new SolidBrush(Color.Purple), 3);
 
             drawingGame.Graphics.DrawImage(_image, Rectangle); //image propre au la classe du rectangle
-            drawingGame.Graphics.DrawLine(droneBrush, new Point(Rectangle.X, Rectangle.Y), new Point(Rectangle.X + Pv/10, Rectangle.Y)); // barre des points de vie
+            drawingGame.Graphics.DrawLine(droneBrush, new Point(Rectangle.X, Rectangle.Y), new Point(Rectangle.X + Pv, Rectangle.Y)); // barre des points de vie 
         }
     }
 }

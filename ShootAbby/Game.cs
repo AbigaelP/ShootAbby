@@ -173,7 +173,7 @@ namespace ShootAbby
             {
                 if (slime.IsTouching(_witch.Rectangle))
                 {
-                    _witch.Pv--;
+                        _witch.Pv --;
                 }
             }
         }
@@ -211,8 +211,7 @@ namespace ShootAbby
 
             _game.Graphics.Clear(Color.LightGreen);
            // _game.Graphics.DrawImage(_image, _rectangle);
-           // _backGround.Render(_game);
-            _witch.Render(_game);
+           //_backGround.Render(_game);
             for (int i = 0; i < _rocks.Count; i++)
             {
                 _rocks[i].Render(_game);
@@ -233,6 +232,7 @@ namespace ShootAbby
             //afficher le score
             _game.Graphics.DrawString($"Score : {_score}", _drawFont, _writingBrush, 0, 0);
       
+            _witch.Render(_game);
             _game.Render();
 
         }

@@ -16,7 +16,7 @@ namespace ShootAbby.Model
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        public Witch(int x, int y) : base(x, y, 100, 100, 1000)
+        public Witch(int x, int y) : base(x, y, 100, 100, 100)
         {
             _image = Image.FromFile("Image/witch.png");
         }
