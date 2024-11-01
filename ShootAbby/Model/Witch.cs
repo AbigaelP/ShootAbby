@@ -42,7 +42,11 @@ namespace ShootAbby.Model
                 _rectangle.Y = Game.HEIGHT - _rectangle.Height;
             }
         }
-        // TODO: héritage déplacement
+        /// <summary>
+        /// Déplacement de la sorcière
+        /// </summary>
+        /// <param name="deplacementX"></param>
+        /// <param name="deplacementY"></param>
         public void Move(int deplacementX, int deplacementY)
         {
             _rectangle.X += deplacementX;
