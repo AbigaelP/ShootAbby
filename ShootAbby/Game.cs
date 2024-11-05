@@ -50,7 +50,7 @@ namespace ShootAbby
             //
             //
             //
-            _backGround = new BackGround(0,0);
+            _backGround = new BackGround(0, 0);
             //
             // Les zones
             //
@@ -173,7 +173,7 @@ namespace ShootAbby
             {
                 if (slime.IsTouching(_witch.Rectangle))
                 {
-                        _witch.Pv --;
+                    _witch.Pv--;
                 }
             }
         }
@@ -200,9 +200,20 @@ namespace ShootAbby
             {
                 _witch.Projectiles.Remove(item);
             }
-            foreach (Slime item in _slimes)
+            foreach (Slime slime in _slimes)
             {
-                item.Move(_witch.Rectangle);
+                bool _condition = true;
+                foreach (Rock e in _rocks)
+                {
+                    if (slime.IsTouching(e.Rectangle))
+                    {
+                        _condition = false;
+                    }
+                }
+                if (_condition)
+                {
+                    slime.Move(_witch.Rectangle);
+                }
             }
 
         }
@@ -210,8 +221,8 @@ namespace ShootAbby
         {
 
             _game.Graphics.Clear(Color.LightGreen);
-           // _game.Graphics.DrawImage(_image, _rectangle);
-           //_backGround.Render(_game);
+            // _game.Graphics.DrawImage(_image, _rectangle);
+            //_backGround.Render(_game);
             for (int i = 0; i < _rocks.Count; i++)
             {
                 _rocks[i].Render(_game);
@@ -231,7 +242,7 @@ namespace ShootAbby
 
             //afficher le score
             _game.Graphics.DrawString($"Score : {_score}", _drawFont, _writingBrush, 0, 0);
-      
+
             _witch.Render(_game);
             _game.Render();
 
@@ -272,7 +283,7 @@ namespace ShootAbby
                     _witch.Projectiles.Add(proDown);
                     break;
                 case Keys.Right:
-                    Projectil proRight = new Projectil(_witch.Rectangle.X +100, _witch.Rectangle.Y + 50, 2, 0);
+                    Projectil proRight = new Projectil(_witch.Rectangle.X + 100, _witch.Rectangle.Y + 50, 2, 0);
                     _witch.Projectiles.Add(proRight);
                     break;
                 case Keys.Left:
