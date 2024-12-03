@@ -203,11 +203,13 @@ namespace ShootAbby
             foreach (Slime slime in _slimes)
             {
                 bool _condition = true;
-                foreach (Rock e in _rocks)
+                foreach (Rock rock in _rocks)
                 {
-                    if (slime.IsTouching(e.Rectangle))
+                    if (slime.IsTouching(rock.Rectangle))
                     {
                         _condition = false;
+
+                        slime.MoveBack(rock.Rectangle);
                     }
                 }
                 if (_condition)

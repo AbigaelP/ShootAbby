@@ -42,5 +42,28 @@ namespace ShootAbby.Model
                 _rectangle.Y += -1;
             }
         }
+        /// <summary>
+        /// Déplacement du slime par rapoort a la position d'un rocher
+        /// </summary>
+        /// <param name="rock"></param>
+        public void MoveBack(Rectangle rock)
+        {
+            if (_rectangle.X < rock.X)
+            {
+                _rectangle.X += -1;
+            }
+            else if (_rectangle.X > rock.X)
+            {
+                _rectangle.X += 1;
+            }
+            if (_rectangle.Y < rock.Y)
+            {
+                _rectangle.Y += -1;
+            }
+            else if (_rectangle.Y > rock.Y)
+            {
+                _rectangle.Y += 1;
+            }
+        }
     }
 }
