@@ -171,9 +171,31 @@ namespace ShootAbby
 
             foreach (Slime slime in _slimes)
             {
+
                 if (slime.IsTouching(_witch.Rectangle))
                 {
                     _witch.Pv--;
+                }
+                foreach (Slime otherSlime in _slimes)
+                {
+                    if ( slime != otherSlime && slime.IsTouching(otherSlime.Rectangle))
+                    {
+                        slime.MoveBack(otherSlime.Rectangle);
+                    }
+                }
+                bool _condition = true;
+                foreach (Rock rock in _rocks)
+                {
+                    if (slime.IsTouching(rock.Rectangle))
+                    {
+                        _condition = false;
+
+                        slime.MoveBack(rock.Rectangle);
+                    }
+                }
+                if (_condition)
+                {
+                    slime.Move(_witch.Rectangle);
                 }
             }
         }
@@ -200,24 +222,7 @@ namespace ShootAbby
             {
                 _witch.Projectiles.Remove(item);
             }
-            foreach (Slime slime in _slimes)
-            {
-                bool _condition = true;
-                foreach (Rock rock in _rocks)
-                {
-                    if (slime.IsTouching(rock.Rectangle))
-                    {
-                        _condition = false;
-
-                        slime.MoveBack(rock.Rectangle);
-                    }
-                }
-                if (_condition)
-                {
-                    slime.Move(_witch.Rectangle);
-                }
-            }
-
+            
         }
         private void Render()
         {
