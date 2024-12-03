@@ -14,6 +14,7 @@ namespace ShootAbby
         BackGround _backGround;
         private Image _image;
         private Rectangle _rectangle;
+        private Rectangle _fenetre;
         private List<Rock> _rocks = new List<Rock>();
         private List<Spawn> _zones = new List<Spawn>();
         private List<Slime> _slimes = new List<Slime>();
@@ -73,6 +74,7 @@ namespace ShootAbby
             //
             //Création des crocher
             //
+            _fenetre = new Rectangle(0, 0, WIDTH - 50, HEIGHT - 50);
             for (int i = 0; i < 3; i++)
             {
                 Rock rocher = new Rock(Helper.Random(0, WIDTH), Helper.Random(0, HEIGHT));
@@ -94,6 +96,10 @@ namespace ShootAbby
                         {
                             _condition = true;
                         }
+                    }
+                    if (!rocher.IsTouching(_fenetre))
+                    {
+                        _condition = true;
                     }
                     if (rocher.IsTouching(_witch.Rectangle))
                     {
