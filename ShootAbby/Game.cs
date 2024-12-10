@@ -143,7 +143,7 @@ namespace ShootAbby
                     {
                         poubelle.Add(projectil);
                         estDansLaPoubelle = true;
-                        slime.Pv--;
+                        slime.Pv +=-100;
                         if (slime.IsDead())
                         {
                             poubelleSlime.Add(slime);

@@ -15,7 +15,7 @@ namespace ShootAbby.Model
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        public Slime(int x, int y) : base(x, y, 60, 50, 5)
+        public Slime(int x, int y) : base(x, y, 60, 50, 500)
         {
             _image = Image.FromFile("Image/slime.png");
         }
