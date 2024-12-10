@@ -23,7 +23,9 @@ namespace ShootAbby.Model
 
             drawingGame.Graphics.DrawImage(_image, Rectangle); //image propre au la classe du rectangle
             drawingGame.Graphics.DrawRectangle(pen, _rectangle); //image propre au la classe du rectangle
-            drawingGame.Graphics.DrawLine(droneBrush, new Point(Rectangle.X, Rectangle.Y), new Point(Rectangle.X + Pv, Rectangle.Y)); // barre des points de vie 
+            int healthBarWidth = (int)((float)_pv / 1000 * _rectangle.Width); // Largeur de la barre de santé proportionnelle aux points de vie
+            drawingGame.Graphics.FillRectangle(Brushes.Red, Rectangle.X, Rectangle.Y - 10, healthBarWidth, 5); // Barre de santé au-dessus de l'élément
+            
         }
     }
 }
