@@ -25,19 +25,19 @@ namespace ShootAbby.Model
         /// <param name="sorciere"></param>
         public void Move(Rectangle sorciere)
         {
-            if (_rectangle.X < sorciere.X)
+            if (_rectangle.X < sorciere.X + 25)
             {
                 _rectangle.X += 1;
             }
-            else if (_rectangle.X > sorciere.X)
+            else if (_rectangle.X > sorciere.X - 25)
             {
                 _rectangle.X += -1;
             }
-            if (_rectangle.Y < sorciere.Y)
+            if (_rectangle.Y < sorciere.Y + 25)
             {
                 _rectangle.Y += 1;
             }
-            else if (_rectangle.Y > sorciere.Y)
+            else if (_rectangle.Y > sorciere.Y - 25)
             {
                 _rectangle.Y += -1;
             }
