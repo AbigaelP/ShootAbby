@@ -267,7 +267,6 @@ namespace ShootAbby
         /// <param name="e"></param>
         private void PressKey(object sender, KeyEventArgs e)
         {
-            Console.WriteLine(e.KeyCode);
 
             switch (e.KeyCode)
             {
@@ -288,19 +287,19 @@ namespace ShootAbby
                     UpdateColission(-5, 0);
                     break;
                 case Keys.Up:
-                    Projectil proUp = new Projectil(_witch.Rectangle.X + 50, _witch.Rectangle.Y, 0, -2);
+                    Projectil proUp = new Projectil(_witch.Rectangle.X + 50, _witch.Rectangle.Y + 40, 0, -2);
                     _witch.Projectiles.Add(proUp);
                     break;
                 case Keys.Down:
-                    Projectil proDown = new Projectil(_witch.Rectangle.X + 50, _witch.Rectangle.Y + 100, 0, 2);
+                    Projectil proDown = new Projectil(_witch.Rectangle.X + 50, _witch.Rectangle.Y - 40 + 100, 0, 2);
                     _witch.Projectiles.Add(proDown);
                     break;
                 case Keys.Right:
-                    Projectil proRight = new Projectil(_witch.Rectangle.X + 100, _witch.Rectangle.Y + 50, 2, 0);
+                    Projectil proRight = new Projectil(_witch.Rectangle.X + 40, _witch.Rectangle.Y + 50, 2, 0);
                     _witch.Projectiles.Add(proRight);
                     break;
                 case Keys.Left:
-                    Projectil proLeft = new Projectil(_witch.Rectangle.X, _witch.Rectangle.Y + 50, -2, 0);
+                    Projectil proLeft = new Projectil(_witch.Rectangle.X + 40, _witch.Rectangle.Y + 50, -2, 0);
                     _witch.Projectiles.Add(proLeft);
                     break;
 
