@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,11 @@ namespace ShootAbby.Model
     public partial class  Witch : GameElement
     {
         public List<Projectil> Projectiles = new List<Projectil>();
+        private int _numberOfProjectile = 10;
+
+
+        public int NumberOfProjectile1 { get => _numberOfProjectile; set => _numberOfProjectile = value; }
+
 
         /// <summary>
         /// Constructeur de la sorcière
@@ -53,6 +59,28 @@ namespace ShootAbby.Model
             _rectangle.X += deplacementX;
             _rectangle.Y += deplacementY;
         }
+        public void Fire(Direction direction)
+        {
+            if (_numberOfProjectile <= 0) return;
+            Projectil projectil= new Projectil(0,0,0,0);
+            switch (direction)
+            {
+                case Direction.DOWN:
+                    projectil = new Projectil(this.Rectangle.X + 50, this.Rectangle.Y + 80, 0, 2);
+                    break;
+                case Direction.UP:
+                    projectil = new Projectil(this.Rectangle.X + 50, this.Rectangle.Y +20, 0, -2);
+                    break;
+                case Direction.LEFT:
+                    projectil = new Projectil(this.Rectangle.X +20, this.Rectangle.Y  +50, -2, 0);
+                    break;
+                case Direction.RIGHT:
+                    projectil = new Projectil(this.Rectangle.X + 80 , this.Rectangle.Y + 50, 2, 0);
+                    break;
+            }
+            this.Projectiles.Add(projectil);
+            _numberOfProjectile --;
 
+        }
     }
 }

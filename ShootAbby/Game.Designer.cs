@@ -45,7 +45,8 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "Game";
             Text = "ShootAbby";
-            KeyDown += PressKey;
+            this.KeyDown += PressKey;
+            this.KeyUp += PressUP;
             ResumeLayout(false);
         }
 

@@ -18,6 +18,11 @@ namespace ShootAbby
         private List<Rock> _rocks = new List<Rock>();
         private List<Spawn> _zones = new List<Spawn>();
         private List<Slime> _slimes = new List<Slime>();
+        private bool _isKeyPressedUp = false;
+        private bool _isKeyPressedDown = false;
+        private bool _isKeyPressedRight = false;
+        private bool _isKeyPressedLeft = false;
+       
 
         //visuel du score
         private int _score = 0;
@@ -143,11 +148,12 @@ namespace ShootAbby
                     {
                         poubelle.Add(projectil);
                         estDansLaPoubelle = true;
-                        slime.Pv +=-100;
+                        slime.Pv += -100;
                         if (slime.IsDead())
                         {
                             poubelleSlime.Add(slime);
                             _score += 10;
+                            _witch.NumberOfProjectile1 = 10;
                         }
                     }
                 }
@@ -177,19 +183,22 @@ namespace ShootAbby
 
             foreach (Slime slime in _slimes)
             {
-
+                //quand un slime touche la sorcière
                 if (slime.IsTouching(_witch.Rectangle))
                 {
                     _witch.Pv--;
                 }
+                //empecher la supperposition des slimes
                 foreach (Slime otherSlime in _slimes)
                 {
-                    if ( slime != otherSlime && slime.IsTouching(otherSlime.Rectangle))
+                    if (slime != otherSlime && slime.IsTouching(otherSlime.Rectangle))
                     {
                         slime.MoveBack(otherSlime.Rectangle);
                     }
                 }
                 bool _condition = true;
+
+                //empecher un slime d'avancer quand il touche un rocher
                 foreach (Rock rock in _rocks)
                 {
                     if (slime.IsTouching(rock.Rectangle))
@@ -228,7 +237,7 @@ namespace ShootAbby
             {
                 _witch.Projectiles.Remove(item);
             }
-            
+
         }
         private void Render()
         {
@@ -255,6 +264,8 @@ namespace ShootAbby
 
             //afficher le score
             _game.Graphics.DrawString($"Score : {_score}", _drawFont, _writingBrush, 0, 0);
+            //afficher les munitions
+            _game.Graphics.DrawString($"Munition: {_witch.NumberOfProjectile1}", _drawFont, _writingBrush, 0, 20);
 
             _witch.Render(_game);
             _game.Render();
@@ -287,22 +298,61 @@ namespace ShootAbby
                     UpdateColission(-5, 0);
                     break;
                 case Keys.Up:
-                    Projectil proUp = new Projectil(_witch.Rectangle.X + 50, _witch.Rectangle.Y + 40, 0, -2);
-                    _witch.Projectiles.Add(proUp);
-                    break;
-                case Keys.Down:
-                    Projectil proDown = new Projectil(_witch.Rectangle.X + 50, _witch.Rectangle.Y - 40 + 100, 0, 2);
-                    _witch.Projectiles.Add(proDown);
-                    break;
-                case Keys.Right:
-                    Projectil proRight = new Projectil(_witch.Rectangle.X + 40, _witch.Rectangle.Y + 50, 2, 0);
-                    _witch.Projectiles.Add(proRight);
-                    break;
-                case Keys.Left:
-                    Projectil proLeft = new Projectil(_witch.Rectangle.X + 40, _witch.Rectangle.Y + 50, -2, 0);
-                    _witch.Projectiles.Add(proLeft);
+                    if (!_isKeyPressedUp) // Si la touche "Up" n'est pas déjà enfoncée
+                    {
+                        _witch.Fire(Direction.UP);
+                        _isKeyPressedUp = true; // Marquer que la touche est enfoncée
+                    }
                     break;
 
+                // Lancer un projectile vers le bas
+                case Keys.Down:
+                    if (!_isKeyPressedDown) // Si la touche "Down" n'est pas déjà enfoncée
+                    {
+                        _witch.Fire(Direction.DOWN);
+                        _isKeyPressedDown = true; // Marquer que la touche est enfoncée
+                    }
+
+                    break;
+
+                // Lancer un projectile vers la droite
+                case Keys.Right:
+                    if (!_isKeyPressedRight) // Si la touche "Right" n'est pas déjà enfoncée
+                    {
+                        _witch.Fire(Direction.RIGHT);
+                        _isKeyPressedRight = true; // Marquer que la touche est enfoncée
+                    }
+                    break;
+
+                // Lancer un projectile vers la gauche
+                case Keys.Left:
+                    if (!_isKeyPressedLeft) // Si la touche "Left" n'est pas déjà enfoncée
+                    {
+                        _witch.Fire(Direction.LEFT);
+                        _isKeyPressedLeft = true; // Marquer que la touche est enfoncée
+                    }
+                    break;
+
+            }
+        }
+        private void PressUP(object sender, KeyEventArgs e)
+        {
+            // Lorsque la touche est relâchée, autorié le tire à nouveau
+            if (e.KeyCode == Keys.Up)
+            {
+                _isKeyPressedUp = false;
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+                _isKeyPressedDown = false;
+            }
+            else if (e.KeyCode == Keys.Right)
+            {
+                _isKeyPressedRight = false;
+            }
+            else if (e.KeyCode == Keys.Left)
+            {
+                _isKeyPressedLeft = false;
             }
         }
         private void UpdateColission(int x, int y)
